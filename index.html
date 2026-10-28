@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDFUnsign - Remove Signatures & Unlock Signed PDF Online</title>
+  <meta name="description"
+    content="Free and secure client-side tool to remove digital signatures, PDF/A read-only locks, and editing restrictions from PDF files. 100% private: files never leave your device.">
+  <meta name="keywords"
+    content="remove pdf signature, unlock signed pdf, strip pdf signature, pdf/a read only, make pdf editable, pdfunsign">
+  <meta name="author" content="PDFUnsign">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical & Hreflang SEO -->
+  <link rel="canonical" href="https://pdfunsign.com/">
+  <link rel="alternate" hreflang="en" href="https://pdfunsign.com/">
+  <link rel="alternate" hreflang="fr" href="https://pdfunsign.com/fr/">
+  <link rel="alternate" hreflang="x-default" href="https://pdfunsign.com/">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pdfunsign.com/">
+  <meta property="og:title" content="PDFUnsign - Remove Signatures & Unlock Signed PDF">
+  <meta property="og:description"
+    content="Unlock signed PDFs directly in your browser. 100% confidential, zero server uploads, native vector quality.">
+  <meta property="og:image" content="https://pdfunsign.com/assets/favicon.svg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PDFUnsign - Remove Signatures & Unlock Signed PDF">
+  <meta name="twitter:description"
+    content="Unlock signed PDFs directly in your browser. 100% confidential, zero server uploads.">
+  <meta name="twitter:image" content="https://pdfunsign.com/assets/favicon.svg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- JSON-LD Schema.org (WebApplication, HowTo & FAQPage for LLM & Search Engines) -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PDFUnsign",
+      "url": "https://pdfunsign.com/",
+      "description": "Client-side tool to remove digital signatures, PDF/A restrictions, and unlock PDF documents for editing.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Works in Chrome, Firefox, Safari, Edge.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Unlock and Remove Signatures from a PDF",
+      "description": "Step-by-step instructions to strip digital signatures and make restricted PDF documents editable online for free.",
+      "totalTime": "PT10S",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Select your document",
+          "text": "Drag and drop your locked or digitally signed PDF file into the upload zone or click browse.",
+          "position": 1
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Algorithmic client-side unlock",
+          "text": "PDFUnsign's JavaScript engine strips /Sig dictionaries, resets AcroForm locks, and cleans PDF/A restrictions in memory.",
+          "position": 2
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Instant download",
+          "text": "Download the clean, 100% vector-preserved editable PDF ready to modify without restrictions.",
+          "position": 3
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is it legal to remove a digital signature from a PDF?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, provided you are the rightful owner or author of the document and need to modify, amend, or update it. Unlocking simply removes cryptographic locks so the document can be edited before re-approving."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my documents or personal data stored on your servers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, never. The entire application executes locally in your web browser using modern JavaScript. Zero bytes are uploaded to the internet or stored on external servers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why did Adobe Acrobat prevent me from editing my PDF?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When a PDF is signed or saved with PDF/A conformance, readers like Adobe Acrobat lock down the editing toolbars with /DocMDP and /Perms flags, alongside strict XMP metadata. PDFUnsign purges these restrictions so editing works seamlessly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the text remain selectable and searchable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, completely. PDFUnsign never turns your PDF into a scanned picture. All font structures, vector curves, text flows, and bookmarks remain intact."
+          }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <!-- Google AdSense Verification & Auto-Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9068810765278401"
+    crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S2WTTLJTHP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-S2WTTLJTHP');
+  </script>
+
+</head>
+
+<body>
+  <div class="bg-mesh"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="/" class="brand-link" id="brand-logo-link">
+        <div class="brand-logo-icon">
+          <img src="assets/favicon.svg" alt="PDFUnsign Logo" width="30" height="30">
+        </div>
+        <span class="brand-title">PDFUnsign</span>
+        <span class="brand-badge" data-i18n="brandTag">Client-Side • Private</span>
+      </a>
+
+      <div class="header-controls">
+        <div class="privacy-pill" title="Processing happens locally in RAM on your device">
+          <span class="privacy-dot"></span>
+          <span data-i18n="privacyBadge">100% Client-Side • No Uploads</span>
+        </div>
+
+        <!-- Language Switcher: / for EN, /fr for FR -->
+        <nav class="lang-selector" aria-label="Language selection">
+          <a href="/fr/" class="lang-btn" data-lang="fr" id="btn-lang-fr">FR</a>
+          <a href="/" class="lang-btn active" data-lang="en" id="btn-lang-en">EN</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- Top Ad Banner (Compact) -->
+    <aside class="ad-slot-wrapper ad-slot-header" aria-label="Advertisement">
+      <div class="ad-label" data-i18n="adLabel">Advertisement</div>
+      <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+        data-ad-client="ca-pub-9068810765278401" data-ad-slot="1234567890"></ins>
+      <div class="ad-placeholder">
+        <span>Google Ads • 728 x 90 Leaderboard</span>
+      </div>
+    </aside>
+
+    <!-- Hero Section (Compact for above-the-fold visibility) -->
+    <section class="hero-section">
+      <div class="hero-tagline" data-i18n="heroTag">⚡ INSTANT & PRIVATE PDF UNLOCKER</div>
+      <h1 class="hero-title">
+        <span data-i18n="heroTitle">Remove Signatures &</span>
+        <span class="hero-title-accent" data-i18n="heroTitleGradient">Make PDFs Editable</span>
+      </h1>
+      <p class="hero-subtitle" data-i18n="heroSubtitle">
+        Instantly strip digital signatures (PAdES, CAdES, DocMDP), AcroForm locks, and PDF/A restrictions. 100% private
+        in your browser.
+      </p>
+
+      <div class="highlights-list">
+        <div class="highlight-item">
+          <span class="highlight-icon">✓</span>
+          <span data-i18n="highlight1">100% Private (zero uploads)</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">✓</span>
+          <span data-i18n="highlight2">Native vector fidelity</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">✓</span>
+          <span data-i18n="highlight3">Editing & conversion unlocked</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Conversion App (Above the fold) -->
+    <div class="tool-container">
+      <section class="converter-card" aria-label="PDF Unlocking Tool">
+        <!-- Drag & Drop Zone -->
+        <div class="drop-zone" id="drop-zone" role="button" tabindex="0" aria-label="Drop PDF files here">
+          <div class="drop-zone-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+          </div>
+          <h2 class="drop-zone-title" data-i18n="dropZoneTitle">Drop your PDF files here</h2>
+          <p class="drop-zone-subtitle" data-i18n="dropZoneSubtitle">or click to browse from your device</p>
+          <button type="button" class="btn-primary" id="browse-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="12" y1="18" x2="12" y2="12"></line>
+              <line x1="9" y1="15" x2="15" y2="15"></line>
+            </svg>
+            <span data-i18n="btnBrowse">Choose PDF Files</span>
+          </button>
+          <div class="drop-zone-note">
+            <span data-i18n="dropZoneNote">🔒 Secure browser-only processing. No documents are ever uploaded to a
+              server.</span>
+          </div>
+          <input type="file" id="file-input" accept=".pdf,application/pdf" multiple>
+        </div>
+
+        <!-- File Processed Queue List -->
+        <div class="file-list-container" id="file-queue-section" style="display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+            <h3 style="font-size: 0.95rem; font-weight: 600;" data-i18n="queueTitle">Processed Files</h3>
+            <button type="button" class="btn-outline" id="clear-all-btn" data-i18n="btnClearAll">Clear All</button>
+          </div>
+          <div id="file-items-list"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Google Ads Slot: Middle (Under Tool) -->
+    <aside class="ad-slot-wrapper ad-slot-middle" aria-label="Advertisement">
+      <div class="ad-label" data-i18n="adLabel">Sponsored Advertisement</div>
+      <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+        data-ad-client="ca-pub-9068810765278401" data-ad-slot="9876543210"></ins>
+      <div class="ad-placeholder">
+        <span>Google Ads • 728 x 90 Responsive Ad Unit</span>
+      </div>
+    </aside>
+
+    <!-- Deep SEO & Explanatory Content -->
+    <section class="seo-section">
+      <!-- Why Choose PDFUnsign -->
+      <div>
+        <div class="section-header">
+          <span class="section-tag">KEY BENEFITS</span>
+          <h2 class="section-title" data-i18n="whyTitle">Why Choose PDFUnsign?</h2>
+          <p class="section-subtitle" data-i18n="whySubtitle">The fastest, most secure way to regain full edit access to
+            your signed documents.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon-box">🔒</div>
+            <h3 class="feature-card-title" data-i18n="feat1Title">Total Privacy Guarantee</h3>
+            <p class="feature-card-desc" data-i18n="feat1Desc">
+              Unlike traditional online PDF editors, PDFUnsign processes your document entirely in your browser's memory
+              using JavaScript. Sensitive contracts, bank statements, and legal files never leave your device.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">✨</div>
+            <h3 class="feature-card-title" data-i18n="feat2Title">Zero Quality Loss (Vector)</h3>
+            <p class="feature-card-desc" data-i18n="feat2Desc">
+              No rasterization or image flattening. Your selectable text, embedded fonts, tables, and native vector
+              graphics are preserved with 100% accuracy.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">🚀</div>
+            <h3 class="feature-card-title" data-i18n="feat3Title">Universal Compatibility</h3>
+            <p class="feature-card-desc" data-i18n="feat3Desc">
+              Open and edit your unlocked PDF in Adobe Acrobat, Nitro, Foxit, Microsoft Word, or LibreOffice without
+              read-only warnings or restricted permissions.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step by Step Workflow -->
+      <div>
+        <div class="section-header">
+          <span class="section-tag" data-i18n="stepsTag">HOW IT WORKS</span>
+          <h2 class="section-title" data-i18n="stepsTitle">How to unlock a signed PDF in 3 simple steps</h2>
+        </div>
+
+        <div class="steps-container">
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <h3 class="step-title" data-i18n="step1Title">1. Select your document</h3>
+            <p class="step-desc" data-i18n="step1Desc">Drag and drop your locked or digitally signed PDF into the upload
+              area.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <h3 class="step-title" data-i18n="step2Title">2. Client-side algorithm</h3>
+            <p class="step-desc" data-i18n="step2Desc">Our JavaScript engine removes /Sig dictionaries, /SigFlags,
+              resets AcroForm permissions, and neutralizes PDF/A XMP metadata.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <h3 class="step-title" data-i18n="step3Title">3. Instant download</h3>
+            <p class="step-desc" data-i18n="step3Desc">Download your clean PDF immediately, ready to be edited, printed,
+              merged, or signed anew without restrictions.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison Table -->
+      <div>
+        <div class="section-header">
+          <span class="section-tag">COMPARISON</span>
+          <h2 class="section-title" data-i18n="compTitle">PDFUnsign vs Traditional Cloud Converters</h2>
+        </div>
+
+        <div class="comparison-card">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th data-i18n="compHeaderCrit">Criteria</th>
+                <th class="brand-col" data-i18n="compHeaderOur">PDFUnsign (Client-Side)</th>
+                <th data-i18n="compHeaderOther">Server-Based Converters</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-i18n="compRow1">Privacy & GDPR</td>
+                <td class="brand-col"><span class="badge-check">✓</span> <span data-i18n="compRow1Our">100% Guaranteed
+                    (No upload)</span></td>
+                <td><span class="badge-cross">✕</span> <span data-i18n="compRow1Other">High risk (Stored on 3rd-party
+                    servers)</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="compRow2">Vector Quality</td>
+                <td class="brand-col"><span class="badge-check">✓</span> <span data-i18n="compRow2Our">Pristine (No
+                    rasterization)</span></td>
+                <td><span class="badge-cross">✕</span> <span data-i18n="compRow2Other">Often compressed or
+                    flattened</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="compRow3">Processing Speed</td>
+                <td class="brand-col"><span class="badge-check">✓</span> <span data-i18n="compRow3Our">Instant (&lt; 1
+                    second)</span></td>
+                <td><span class="badge-cross">✕</span> <span data-i18n="compRow3Other">Depends on upload & queue
+                    speeds</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="compRow4">Size Limits & Pricing</td>
+                <td class="brand-col"><span class="badge-check">✓</span> <span data-i18n="compRow4Our">Unlimited &
+                    Free</span></td>
+                <td><span class="badge-cross">✕</span> <span data-i18n="compRow4Other">Subscription walls or file
+                    caps</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div>
+        <div class="section-header">
+          <span class="section-tag">FAQ</span>
+          <h2 class="section-title" data-i18n="faqTitle">Frequently Asked Questions</h2>
+          <p class="section-subtitle" data-i18n="faqSubtitle">Everything you need to know about unlocking and un-signing
+            PDFs.</p>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span data-i18n="faqQ1">Is it legal to remove a digital signature from a PDF?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p data-i18n="faqA1">
+                Yes, provided you are the rightful owner or author of the document and need to modify, amend, or update
+                it. Unlocking simply removes cryptographic locks so the document can be edited, just as you would update
+                a draft before re-approving.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span data-i18n="faqQ2">Are my documents or personal data stored on your servers?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p data-i18n="faqA2">
+                No, never. The entire application executes locally in your web browser using modern JavaScript. Zero
+                bytes are uploaded to the internet or stored on external servers.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span data-i18n="faqQ3">Why did Adobe Acrobat prevent me from editing my PDF?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p data-i18n="faqA3">
+                When a PDF is signed or saved with PDF/A conformance, readers like Adobe Acrobat lock down the editing
+                toolbars with /DocMDP and /Perms flags, alongside strict XMP metadata. PDFUnsign purges these
+                restrictions so editing works seamlessly.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span data-i18n="faqQ4">Does the text remain selectable and searchable?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p data-i18n="faqA4">
+                Yes, completely. PDFUnsign never turns your PDF into a scanned picture. All font structures, vector
+                curves, text flows, and bookmarks remain intact.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div>
+          <span class="footer-brand-title">PDFUnsign.com</span>
+          <p class="footer-brand-desc" data-i18n="footerDesc">
+            Free online tool to remove digital signatures and unlock PDF files for editing. 100% private client-side
+            processing.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <a href="#drop-zone" class="footer-link">Tool</a>
+          <a href="/fr/" class="footer-link">Français</a>
+          <a href="/" class="footer-link">English</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div data-i18n="footerCopyright">© 2026 PDFUnsign.com — All rights reserved.</div>
+        <div>100% Client-Side Privacy Guaranteed</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Portal -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- PDF-Lib Library -->
+  <script src="assets/pdf-lib.min.js"></script>
+  <script>
+    if (typeof PDFLib === 'undefined') {
+      document.write('<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"><\/script>');
+    }
+  </script>
+
+  <!-- App Logic (Minified) -->
+  <script src="app.min.js"></script>
+</body>
+
+</html>

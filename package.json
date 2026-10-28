@@ -1,0 +1,25 @@
+{
+  "name": "pdfunsign",
+  "version": "1.0.0",
+  "description": "Client-side digital signature remover and PDF unlocker",
+  "main": "app.js",
+  "scripts": {
+    "minify": "terser app.js -c -m -o app.min.js",
+    "build": "npm run minify",
+    "watch": "node watch.js"
+  },
+  "keywords": [
+    "pdf",
+    "signature",
+    "unlock",
+    "client-side"
+  ],
+  "author": "PDFUnsign",
+  "license": "ISC",
+  "dependencies": {
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "terser": "^5.39.0"
+  }
+}

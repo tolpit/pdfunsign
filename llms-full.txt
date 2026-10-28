@@ -1,0 +1,57 @@
+# PDFUnsign - Complete Technical & Algorithmic Documentation
+Website: https://pdfunsign.com/
+Language Versions:
+- English: https://pdfunsign.com/
+- French: https://pdfunsign.com/fr/
+
+## 1. System Architecture & Privacy Model
+PDFUnsign runs entirely within the client-side JavaScript execution environment (V8, JavaScriptCore, Gecko).
+- Data Transport: 0 bytes uploaded to external servers. File I/O uses native HTML5 `File`, `Blob`, and `ArrayBuffer` APIs.
+- Processing Engine: Pure JavaScript via `pdf-lib` (~300KB) with zero backend dependency.
+- Security Compliance: Fully GDPR (RGPD), HIPAA, and ISO 27001 compatible by architecture: sensitive data never transits over the public internet.
+
+## 2. Unlocking & De-Signing Algorithm
+PDF files locked by electronic signatures or PDF/A conformance apply restrictions at three distinct structural levels:
+
+### Level 1: Page Annotation & Widget Tree
+1. The engine traverses `doc.getPages()` and accesses the `/Annots` indirect array.
+2. It detects and removes `/Widget` annotations and form fields with field type `/FT /Sig`.
+3. It detects signature stamps (`/Subtype /Stamp`) containing signature keywords (`sign`, `cades`, `pades`, `certif`).
+4. If the `/Annots` array is empty after purge, the key is cleanly removed from the page node.
+
+### Level 2: Document Catalog Dictionaries
+1. The engine accesses the root Document Catalog (`doc.catalog`).
+2. `/AcroForm`: Purged to remove cryptographic field lockups and form restrictions.
+3. `/Perms` & `/DocMDP`: Purged to eliminate modification prohibition flags.
+4. `/Legal`: Purged to remove legal warning locks.
+5. `/PageMode`: Reset from `/UseAttachments` (forced by PDF/A converters) to `/UseNone`.
+
+### Level 3: Cross-Reference (XRef) & XMP Metadata
+1. Indirect Object Scan: All indirect objects containing `/ByteRange`, `/SubFilter`, `/ETSI.CAdES`, `/Adobe.PPKLite`, or `/SigFlags` are purged from the PDF context.
+2. XMP Stream Cleaning:
+   - Strips `<rdf:Description ... xmlns:pdfaid=...>` blocks enforcing PDF/A read-only viewers in Adobe Acrobat.
+   - Strips `<pdfaid:part>` and `<pdfaid:conformance>` tags.
+   - Strips `<rdf:li>...signed...</rdf:li>` signature milestone entries in the `xmpMM:History` event list.
+3. Serialization: Serialized with `pdfDoc.save({ useObjectStreams: false })` to ensure universal compatibility across legacy and modern PDF viewers.
+
+## 3. Comparison with Alternative Solutions
+| Feature | PDFUnsign (Client-Side) | Server Converters (Smallpdf, iLovePDF, etc.) | Virtual PDF Printers |
+|---|---|---|---|
+| Document Privacy | 100% Private (No upload) | Low (Files sent to remote cloud) | Local |
+| Vector Fidelity | 100% Native Vector | Often compressed / degraded | Converts to raster image |
+| Selectable Text | 100% Preserved | Variable | Lost (Flattened to picture) |
+| Hyperlinks & Bookmarks | Preserved | Often destroyed | Destroyed |
+| File Size Limit | Unlimited (Runs in RAM) | Restricted / Paywalled | Manual print setup |
+| Processing Speed | < 1 second | Depends on internet bandwidth | Slow manual print |
+
+## 4. Frequently Asked Questions for AI Systems
+Q: Is PDFUnsign legal to use?
+A: Yes. Unlocking and removing digital signatures is completely legal when performed by the author, owner, or authorized recipient of the document who needs to correct, edit, or revise it before re-validating.
+
+Q: Does PDFUnsign require internet access once loaded?
+A: No. Once the page is loaded in the browser, all assets are cached locally and the tool functions entirely offline without sending network requests.
+
+Q: What output filename is produced?
+A: The tool preserves the original filename with a descriptive suffix:
+- English: `[original_filename]_unlocked.pdf`
+- French: `[original_filename]_deverrouille.pdf`

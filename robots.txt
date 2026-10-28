@@ -1,0 +1,40 @@
+# ==============================================================================
+# PDFUnsign.com - Robots.txt (Optimized for Web Search & AI Crawlers)
+# ==============================================================================
+
+User-agent: *
+Allow: /
+
+# OpenAI Crawlers (ChatGPT Search, GPTBot)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Perplexity AI Crawler
+User-agent: PerplexityBot
+Allow: /
+
+# Anthropic Claude Crawlers
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Google Gemini & AI Overviews
+User-agent: Google-Extended
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# Sitemaps & AI Documentation
+Sitemap: https://pdfunsign.com/sitemap.xml
+LLMs-Txt: https://pdfunsign.com/llms.txt

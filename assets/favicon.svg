@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="primaryGrad" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="50%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="20" y1="20" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+  <!-- Document Shape -->
+  <path d="M10 6C10 4.89543 10.8954 4 12 4H28L38 14V42C38 43.1046 37.1046 44 36 44H12C10.8954 44 10 43.1046 10 42V6Z" fill="#1E2235" stroke="url(#primaryGrad)" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- Folded Corner -->
+  <path d="M28 4V14H38" stroke="url(#primaryGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="#252A40"/>
+  <!-- Text lines -->
+  <line x1="16" y1="20" x2="26" y2="20" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+  <line x1="16" y1="26" x2="24" y2="26" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+  <!-- Unlocked Lock / Badge -->
+  <circle cx="34" cy="34" r="10" fill="#0F172A" stroke="url(#shieldGrad)" stroke-width="2.5"/>
+  <!-- Shackle (unlocked) -->
+  <path d="M31 31V28C31 26.3431 32.3431 25 34 25C35.6569 25 37 26.3431 37 28V29" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+  <!-- Body -->
+  <rect x="30" y="31" width="8" height="6" rx="1.5" fill="#10B981"/>
+</svg>

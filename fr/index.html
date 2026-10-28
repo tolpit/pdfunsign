@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDFUnsign - Supprimer les Signatures et Déverrouiller un PDF en Ligne</title>
+  <meta name="description"
+    content="Supprimez gratuitement et en toute sécurité les signatures électroniques, verrous PDF/A et restrictions d'édition de vos PDF. 100% côté client, vos fichiers ne quittent jamais votre appareil.">
+  <meta name="keywords"
+    content="supprimer signature pdf, déverrouiller pdf signé, enlever signature electronique, pdf/a lecture seule, pdf editable, pdfunsign">
+  <meta name="author" content="PDFUnsign">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical & Hreflang SEO -->
+  <link rel="canonical" href="https://pdfunsign.com/fr/">
+  <link rel="alternate" hreflang="fr" href="https://pdfunsign.com/fr/">
+  <link rel="alternate" hreflang="en" href="https://pdfunsign.com/">
+  <link rel="alternate" hreflang="x-default" href="https://pdfunsign.com/">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pdfunsign.com/fr/">
+  <meta property="og:title" content="PDFUnsign - Supprimer les Signatures et Déverrouiller un PDF">
+  <meta property="og:description"
+    content="Déverrouillez vos PDF signés instantanément dans votre navigateur. 100% confidentiel, zéro upload serveur, fidélité vectorielle native.">
+  <meta property="og:image" content="https://pdfunsign.com/assets/favicon.svg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PDFUnsign - Supprimer les Signatures et Déverrouiller un PDF">
+  <meta name="twitter:description"
+    content="Déverrouillez vos PDF signés instantanément dans votre navigateur. 100% confidentiel, zéro upload serveur.">
+  <meta name="twitter:image" content="https://pdfunsign.com/assets/favicon.svg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- JSON-LD Schema.org (WebApplication, HowTo & FAQPage pour LLMs et Moteurs de Recherche) -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PDFUnsign",
+      "url": "https://pdfunsign.com/fr/",
+      "description": "Outil côté client pour supprimer les signatures numériques, les restrictions PDF/A et déverrouiller les PDF pour modification.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Nécessite JavaScript. Compatible Chrome, Firefox, Safari, Edge.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "Comment supprimer une signature électronique et déverrouiller un PDF",
+      "description": "Guide étape par étape pour supprimer les signatures et rendre un document PDF verrouillé modifiable gratuitement en ligne.",
+      "totalTime": "PT10S",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Déposez votre document",
+          "text": "Glissez-déposez votre fichier PDF verrouillé ou signé dans la zone de dépôt ou sélectionnez-le depuis votre appareil.",
+          "position": 1
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Nettoyage algorithmique côté client",
+          "text": "Le moteur JavaScript supprime les dictionnaires /Sig, purge les drapeaux /SigFlags, réinitialise AcroForm et neutralise les verrous PDF/A.",
+          "position": 2
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Téléchargement immédiat",
+          "text": "Téléchargez votre PDF déverrouillé, 100% vectoriel, prêt à être modifié, annoté ou converti sans restrictions.",
+          "position": 3
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Est-ce légal de supprimer une signature électronique d'un PDF ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, tant que vous êtes l'auteur ou le propriétaire légitime du document et que vous devez le corriger, le mettre à jour ou le modifier. Le déverrouillage supprime la protection cryptographique pour permettre l'édition."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Mes données personnelles ou documents confidentiels sont-ils stockés ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolument pas. L'intégralité du traitement s'exécute localement dans votre navigateur web grâce à JavaScript. Rien n'est envoyé sur internet ni enregistré sur un quelconque serveur."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Pourquoi Adobe Acrobat m'empêchait-il de modifier mon PDF ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lorsqu'un document est signé numériquement ou conforme à la norme PDF/A, Acrobat verrouille l'interface avec des balises d'intégrité (/DocMDP, /Perms) et des métadonnées XMP (pdfaid). PDFUnsign purge ces verrous logiciels."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Le texte reste-t-il sélectionnable et modifiable ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, à 100%. PDFUnsign ne transforme jamais votre PDF en image. Tous les calques textuels, les polices de caractères incorporées et les éléments vectoriels sont préservés avec une exactitude mathématique."
+          }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <!-- Google AdSense Verification & Auto-Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9068810765278401"
+    crossorigin="anonymous"></script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S2WTTLJTHP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-S2WTTLJTHP');
+  </script>
+</head>
+
+<body>
+  <div class="bg-mesh"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="/fr/" class="brand-link" id="brand-logo-link">
+        <div class="brand-logo-icon">
+          <img src="../assets/favicon.svg" alt="PDFUnsign Logo" width="30" height="30">
+        </div>
+        <span class="brand-title">PDFUnsign</span>
+        <span class="brand-badge" data-i18n="brandTag">Client-Side • Privé</span>
+      </a>
+
+      <div class="header-controls">
+        <div class="privacy-pill" title="Tous les traitements s'exécutent en mémoire vive sur votre appareil">
+          <span class="privacy-dot"></span>
+          <span data-i18n="privacyBadge">100% Côté Client • Zéro Upload</span>
+        </div>
+
+        <!-- Language Switcher: / for EN, /fr for FR -->
+        <nav class="lang-selector" aria-label="Sélecteur de langue">
+          <a href="/fr/" class="lang-btn active" data-lang="fr" id="btn-lang-fr">FR</a>
+          <a href="/" class="lang-btn" data-lang="en" id="btn-lang-en">EN</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- Top Ad Banner (Compact) -->
+    <aside class="ad-slot-wrapper ad-slot-header" aria-label="Publicité">
+      <div class="ad-label" data-i18n="adLabel">Publicité</div>
+      <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+        data-ad-client="ca-pub-9068810765278401" data-ad-slot="1234567890"></ins>
+      <div class="ad-placeholder">
+        <span>Google Ads • 728 x 90 Leaderboard</span>
+      </div>
+    </aside>
+
+    <!-- Hero Section (Compact pour affichage au-dessus de la ligne de flottaison) -->
+    <section class="hero-section">
+      <div class="hero-tagline" data-i18n="heroTag">⚡ DÉVERROUILLAGE PDF INSTANTANÉ & PRIVÉ</div>
+      <h1 class="hero-title">
+        <span data-i18n="heroTitle">Supprimez les Signatures &</span>
+        <span class="hero-title-accent" data-i18n="heroTitleGradient">Rendez vos PDF Éditables</span>
+      </h1>
+      <p class="hero-subtitle" data-i18n="heroSubtitle">
+        Éliminez instantanément les signatures électroniques (PAdES, CAdES, DocMDP), les verrous de formulaire AcroForm
+        et les restrictions de lecture seule PDF/A. Tout est traité dans votre navigateur.
+      </p>
+
+      <div class="highlights-list">
+        <div class="highlight-item">
+          <span class="highlight-icon">✓</span>
+          <span data-i18n="highlight1">100% Confidentiel (zéro upload)</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">✓</span>
+          <span data-i18n="highlight2">Fidélité vectorielle native</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">✓</span>
+          <span data-i18n="highlight3">Édition et conversion débloquées</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Conversion App (Au-dessus de la ligne de flottaison) -->
+    <div class="tool-container">
+      <section class="converter-card" aria-label="Outil de déverrouillage PDF">
+        <!-- Drag & Drop Zone -->
+        <div class="drop-zone" id="drop-zone" role="button" tabindex="0" aria-label="Glissez vos fichiers PDF ici">
+          <div class="drop-zone-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+          </div>
+          <h2 class="drop-zone-title" data-i18n="dropZoneTitle">Glissez vos fichiers PDF ici</h2>
+          <p class="drop-zone-subtitle" data-i18n="dropZoneSubtitle">ou cliquez pour sélectionner un ou plusieurs
+            fichiers depuis votre appareil</p>
+          <button type="button" class="btn-primary" id="browse-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="12" y1="18" x2="12" y2="12"></line>
+              <line x1="9" y1="15" x2="15" y2="15"></line>
+            </svg>
+            <span data-i18n="btnBrowse">Sélectionner des PDF</span>
+          </button>
+          <div class="drop-zone-note">
+            <span data-i18n="dropZoneNote">🔒 Traitement sécurisé dans votre navigateur. Aucun fichier n'est envoyé sur
+              un serveur.</span>
+          </div>
+          <input type="file" id="file-input" accept=".pdf,application/pdf" multiple>
+        </div>
+
+        <!-- File Processed Queue List -->
+        <div class="file-list-container" id="file-queue-section" style="display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+            <h3 style="font-size: 0.95rem; font-weight: 600;" data-i18n="queueTitle">Fichiers traités</h3>
+            <button type="button" class="btn-outline" id="clear-all-btn" data-i18n="btnClearAll">Tout effacer</button>
+          </div>
+          <div id="file-items-list"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Google Ads Slot: Milieu de page (Sous l'outil) -->
+    <aside class="ad-slot-wrapper ad-slot-middle" aria-label="Publicité">
+      <div class="ad-label" data-i18n="adLabel">Annonce sponsorisée</div>
+      <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+        data-ad-client="ca-pub-9068810765278401" data-ad-slot="9876543210"></ins>
+      <div class="ad-placeholder">
+        <span>Google Ads • 728 x 90 Responsive Ad Unit</span>
+      </div>
+    </aside>
+
+    <!-- Deep SEO & Explanatory Content -->
+    <section class="seo-section">
+      <!-- Why Choose PDFUnsign -->
+      <div>
+        <div class="section-header">
+          <span class="section-tag">AVANTAGES CLÉS</span>
+          <h2 class="section-title" data-i18n="whyTitle">Pourquoi utiliser PDFUnsign ?</h2>
+          <p class="section-subtitle" data-i18n="whySubtitle">La solution la plus rapide et confidentielle pour
+            réactiver l'édition de vos documents.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon-box">🔒</div>
+            <h3 class="feature-card-title" data-i18n="feat1Title">Respect total de votre vie privée</h3>
+            <p class="feature-card-desc" data-i18n="feat1Desc">
+              Contrairement aux convertisseurs classiques, PDFUnsign traite votre document directement dans votre
+              mémoire vive (RAM) via JavaScript. Vos contrats, relevés et documents légaux ne quittent jamais votre
+              machine.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">✨</div>
+            <h3 class="feature-card-title" data-i18n="feat2Title">Zéro perte de qualité (Vectoriel)</h3>
+            <p class="feature-card-desc" data-i18n="feat2Desc">
+              Aucune rastérisation ni conversion en image. Vos textes sélectionnables, polices intégrées, tableaux et
+              graphismes vectoriels originaux sont conservés à 100%.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">🚀</div>
+            <h3 class="feature-card-title" data-i18n="feat3Title">Compatibilité Universelle</h3>
+            <p class="feature-card-desc" data-i18n="feat3Desc">
+              Compatible avec Adobe Acrobat, Nitro, Foxit, Word, LibreOffice et les services cloud. Les alertes de
+              lecture seule PDF/A et les champs verrouillés disparaissent complètement.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step by Step Workflow -->
+      <div>
+        <div class="section-header">
+          <span class="section-tag" data-i18n="stepsTag">FONCTIONNEMENT</span>
+          <h2 class="section-title" data-i18n="stepsTitle">Comment déverrouiller un PDF signé en 3 étapes</h2>
+        </div>
+
+        <div class="steps-container">
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <h3 class="step-title" data-i18n="step1Title">1. Déposez votre document</h3>
+            <p class="step-desc" data-i18n="step1Desc">Faites glisser votre fichier PDF verrouillé ou signé dans la zone
+              de dépôt ci-dessus.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <h3 class="step-title" data-i18n="step2Title">2. Nettoyage algorithmique</h3>
+            <p class="step-desc" data-i18n="step2Desc">Le moteur JavaScript supprime les dictionnaires /Sig, les
+              drapeaux /SigFlags, réinitialise AcroForm et nettoie les balises XMP.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <h3 class="step-title" data-i18n="step3Title">3. Téléchargement immédiat</h3>
+            <p class="step-desc" data-i18n="step3Desc">Récupérez votre PDF prêt à être modifié, annoté, fusionné ou
+              re-signé sans aucune restriction.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison Table -->
+      <div>
+        <div class="section-header">
+          <span class="section-tag">COMPARATIF</span>
+          <h2 class="section-title" data-i18n="compTitle">PDFUnsign vs Outils Traditionnels</h2>
+        </div>
+
+        <div class="comparison-card">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th data-i18n="compHeaderCrit">Critères</th>
+                <th class="brand-col" data-i18n="compHeaderOur">PDFUnsign (Côté Client)</th>
+                <th data-i18n="compHeaderOther">Convertisseurs Serveur</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-i18n="compRow1">Confidentialité & RGPD</td>
+                <td class="brand-col"><span class="badge-check">✓</span> <span data-i18n="compRow1Our">100% Garanti
+                    (aucun upload)</span></td>
+                <td><span class="badge-cross">✕</span> <span data-i18n="compRow1Other">Risque (stockage serveur
+                    tiers)</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="compRow2">Qualité vectorielle</td>
+                <td class="brand-col"><span class="badge-check">✓</span> <span data-i18n="compRow2Our">Parfaite (aucune
+                    rastérisation)</span></td>
+                <td><span class="badge-cross">✕</span> <span data-i18n="compRow2Other">Souvent pixelisé / aplati en
+                    image</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="compRow3">Vitesse de traitement</td>
+                <td class="brand-col"><span class="badge-check">✓</span> <span data-i18n="compRow3Our">Instantané (&lt;
+                    1 seconde)</span></td>
+                <td><span class="badge-cross">✕</span> <span data-i18n="compRow3Other">Dépendant de
+                    l'upload/download</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="compRow4">Limites de taille / Quotas</td>
+                <td class="brand-col"><span class="badge-check">✓</span> <span data-i18n="compRow4Our">Illimité &
+                    Gratuit</span></td>
+                <td><span class="badge-cross">✕</span> <span data-i18n="compRow4Other">Abonnements payants ou
+                    bridés</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div>
+        <div class="section-header">
+          <span class="section-tag">FAQ</span>
+          <h2 class="section-title" data-i18n="faqTitle">Foire Aux Questions (FAQ)</h2>
+          <p class="section-subtitle" data-i18n="faqSubtitle">Tout ce que vous devez savoir sur le déverrouillage de PDF
+            signés.</p>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span data-i18n="faqQ1">Est-ce légal de supprimer une signature électronique d'un PDF ?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p data-i18n="faqA1">
+                Oui, tant que vous êtes l'auteur ou le propriétaire légitime du document et que vous devez le corriger,
+                le mettre à jour ou le modifier. Le déverrouillage supprime la protection cryptographique pour permettre
+                l'édition, tout comme vous modifieriez un brouillon avant validation finale.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span data-i18n="faqQ2">Mes données personnelles ou documents confidentiels sont-ils stockés ?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p data-i18n="faqA2">
+                Absolument pas. L'intégralité du traitement s'exécute localement dans votre navigateur web grâce à la
+                technologie WebAssembly et JavaScript moderne. Rien n'est envoyé sur internet ni enregistré sur un
+                quelconque serveur.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span data-i18n="faqQ3">Pourquoi Adobe Acrobat m'empêchait-il de modifier mon PDF ?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p data-i18n="faqA3">
+                Lorsqu'un document est signé numériquement ou conforme à la norme PDF/A, Acrobat verrouille l'interface
+                avec des balises d'intégrité (/DocMDP, /Perms) et des métadonnées XMP (pdfaid). PDFUnsign purge ces
+                verrous logiciels pour rétablir les capacités complètes d'édition.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span data-i18n="faqQ4">Le texte reste-t-il sélectionnable et modifiable ?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p data-i18n="faqA4">
+                Oui, à 100%. PDFUnsign ne transforme jamais votre PDF en image. Tous les calques textuels, les polices
+                de caractères incorporées et les éléments vectoriels sont préservés avec une exactitude mathématique.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div>
+          <span class="footer-brand-title">PDFUnsign.com</span>
+          <p class="footer-brand-desc" data-i18n="footerDesc">
+            Outil gratuit de déverrouillage et suppression de signatures électroniques sur PDF. Traitement local et
+            sécurisé dans le navigateur.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <a href="#drop-zone" class="footer-link">Outil</a>
+          <a href="/fr/" class="footer-link">Français</a>
+          <a href="/" class="footer-link">English</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div data-i18n="footerCopyright">© 2026 PDFUnsign.com — Tous droits réservés.</div>
+        <div>100% Client-Side Privacy Guaranteed</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Portal -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- PDF-Lib Library -->
+  <script src="../assets/pdf-lib.min.js"></script>
+  <script>
+    if (typeof PDFLib === 'undefined') {
+      document.write('<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"><\/script>');
+    }
+  </script>
+
+  <!-- App Logic (Minified) -->
+  <script src="../app.min.js"></script>
+</body>
+
+</html>

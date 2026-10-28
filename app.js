@@ -89,12 +89,15 @@ const i18n = {
     faqQ4: "Le texte reste-t-il sélectionnable et modifiable ?",
     faqA4: "Oui, à 100%. PDFUnsign ne transforme jamais votre PDF en image. Tous les calques textuels, les polices de caractères incorporées et les éléments vectoriels sont préservés avec une exactitude mathématique.",
 
-    // Footer
     footerDesc: "Outil gratuit de déverrouillage et suppression de signatures électroniques sur PDF. Traitement local et sécurisé dans le navigateur.",
     footerPrivacy: "Politique de confidentialité",
     footerTerms: "Conditions d'utilisation",
     footerContact: "Contact",
-    footerCopyright: "© 2026 PDFUnsign.com — Tous droits réservés."
+    footerCopyright: "© 2026 PDFUnsign.com — Tous droits réservés.",
+    cookieText: "Nous utilisons des cookies pour mesurer l'audience (Google Analytics). Vos documents PDF restent strictement confidentiels et ne quittent jamais votre appareil.",
+    cookieAccept: "Accepter",
+    cookieDecline: "Refuser",
+    cookieManage: "Gestion des cookies"
   },
 
   en: {
@@ -179,12 +182,15 @@ const i18n = {
     faqQ4: "Does the text remain selectable and searchable?",
     faqA4: "Yes, completely. PDFUnsign never turns your PDF into a scanned picture. All font structures, vector curves, text flows, and bookmarks remain intact.",
 
-    // Footer
     footerDesc: "Free online tool to remove digital signatures and unlock PDF files for editing. 100% private client-side processing.",
     footerPrivacy: "Privacy Policy",
     footerTerms: "Terms of Service",
     footerContact: "Contact",
-    footerCopyright: "© 2026 PDFUnsign.com — All rights reserved."
+    footerCopyright: "© 2026 PDFUnsign.com — All rights reserved.",
+    cookieText: "We use cookies to measure website traffic (Google Analytics). Your PDF documents remain strictly confidential and never leave your device.",
+    cookieAccept: "Accept",
+    cookieDecline: "Decline",
+    cookieManage: "Cookie Preferences"
   }
 };
 
@@ -711,4 +717,73 @@ document.addEventListener('DOMContentLoaded', () => {
   } catch (e) {
     console.debug('AdSense initialization notice:', e);
   }
+
+  // GDPR Cookie Consent Initialization
+  initCookieConsent();
 });
+
+// ============================================================================
+// 6. GDPR COOKIE CONSENT & CONDITIONAL GOOGLE ANALYTICS (GA4)
+// ============================================================================
+const GA_ID = 'G-S2WTTLJTHP';
+let gaLoaded = false;
+
+function loadGoogleAnalytics() {
+  if (gaLoaded) return;
+  gaLoaded = true;
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+  document.head.appendChild(script);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', GA_ID, {
+    anonymize_ip: true
+  });
+}
+
+function initCookieConsent() {
+  const banner = document.getElementById('cookie-banner');
+  const consent = localStorage.getItem('pdfunsign_cookie_consent');
+
+  if (consent === 'accepted') {
+    loadGoogleAnalytics();
+    if (banner) banner.style.display = 'none';
+  } else if (consent === 'declined') {
+    if (banner) banner.style.display = 'none';
+  } else {
+    // Show banner on first visit
+    if (banner) banner.style.display = 'flex';
+  }
+
+  const acceptBtn = document.getElementById('cookie-accept-btn');
+  const declineBtn = document.getElementById('cookie-decline-btn');
+
+  if (acceptBtn) {
+    acceptBtn.addEventListener('click', () => {
+      localStorage.setItem('pdfunsign_cookie_consent', 'accepted');
+      if (banner) banner.style.display = 'none';
+      loadGoogleAnalytics();
+      showToast(currentLang === 'fr' ? 'Préférences enregistrées.' : 'Preferences saved.', 'info');
+    });
+  }
+
+  if (declineBtn) {
+    declineBtn.addEventListener('click', () => {
+      localStorage.setItem('pdfunsign_cookie_consent', 'declined');
+      if (banner) banner.style.display = 'none';
+      showToast(currentLang === 'fr' ? 'Cookies analytiques refusés.' : 'Analytics cookies declined.', 'info');
+    });
+  }
+
+  document.querySelectorAll('.open-cookie-banner').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (banner) banner.style.display = 'flex';
+    });
+  });
+}

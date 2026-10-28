@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "pdfunsign",
+  "title": "PDFUnsign - Digital Signature Stripper & PDF Unlocker",
+  "description": "Client-side privacy-first tool to remove digital signatures (PAdES, CAdES, DocMDP), reset AcroForm permission locks, and strip PDF/A read-only flags from PDF documents.",
+  "version": "1.0.0",
+  "homepage": "https://pdfunsign.com/",
+  "repository": "https://github.com/tolpit/pdfunsign",
+  "license": "ISC",
+  "privacy": {
+    "model": "100% Client-Side",
+    "dataTransmitted": false,
+    "serverStorage": false,
+    "description": "Zero byte upload guarantee. Processing executes entirely inside local sandboxed browser memory or runtime."
+  },
+  "capabilities": {
+    "tools": [
+      {
+        "name": "unlock_pdf",
+        "description": "Strips all electronic signatures, form locks, and PDF/A restrictions from a PDF document while strictly preserving 100% native vector graphics, selectable text, and embedded fonts without rasterization.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "file": {
+              "type": "string",
+              "format": "binary",
+              "description": "The PDF document file (binary or base64) to unlock."
+            },
+            "language": {
+              "type": "string",
+              "enum": ["en", "fr"],
+              "default": "en",
+              "description": "Language used for filename suffix generation (_unlocked or _deverrouille)."
+            }
+          },
+          "required": ["file"]
+        },
+        "returns": {
+          "type": "object",
+          "properties": {
+            "clean_file": {
+              "type": "string",
+              "format": "binary",
+              "description": "The editable, de-signed PDF document."
+            },
+            "signatures_removed": {
+              "type": "integer",
+              "description": "Count of /Sig dictionaries, widgets, and signature stamps stripped."
+            },
+            "permissions_unlocked": {
+              "type": "boolean",
+              "description": "Whether /AcroForm, /Perms, /DocMDP, and /Legal locks were purged."
+            },
+            "pdfa_cleared": {
+              "type": "boolean",
+              "description": "Whether PDF/A read-only restrictions and XMP metadata were neutralized."
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_model": "pdfunsign",
+  "name_for_human": "PDFUnsign",
+  "description_for_model": "Tool to remove electronic and digital signatures (PAdES, CAdES, DocMDP), reset AcroForm editing permissions, and unlock read-only PDF/A files. Executes 100% client-side with zero data storage.",
+  "description_for_human": "Free and secure online tool to strip digital signatures and make signed PDFs editable directly in your browser.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "mcp",
+    "url": "https://pdfunsign.com/.well-known/mcp.json"
+  },
+  "logo_url": "https://pdfunsign.com/assets/favicon.svg",
+  "contact_email": "baes.theo@gmail.com",
+  "legal_info_url": "https://pdfunsign.com/"
+}

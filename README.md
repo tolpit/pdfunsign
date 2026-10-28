@@ -36,12 +36,12 @@
 npm install
 ```
 
-### 2. Minify JavaScript
+### 2. Minify JavaScript & CSS
 ```bash
 npm run build
 ```
 
-### 3. Watch mode (auto-minify on save)
+### 3. Watch mode (auto-minify JS & CSS on save)
 ```bash
 npm run watch
 ```
